@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { useFonts } from "expo-font";
 
 const user = {
   id: "jane",
@@ -70,6 +71,16 @@ const renderItem = ({ item, navigation }) => (
   </TouchableOpacity>
 );
 function HomeScreen({ navigation }) {
+  const [loaded] = useFonts({
+    Mercury: require("../../assets/fonts/Mercury.otf"),
+    WhitneyBold: require("../../assets/fonts/whitneybold.otf"),
+    WhitneyMedium: require("../../assets/fonts/whitneymedium.otf"),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <FlatList
@@ -120,19 +131,19 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#990024",
     marginBottom: 10,
-    // fontFamily: "WhitneyBold",
+    fontFamily: "WhitneyBold",
   },
   title: {
     fontSize: 19,
     fontWeight: "bold",
     marginBottom: 10,
-    // fontFamily: "WhitneyBold",
+    fontFamily: "WhitneyBold",
   },
   author: {
     fontSize: 14,
     fontWeight: "500",
     color: "grey",
-    // fontFamily: "WhitneyMedium",
+    fontFamily: "WhitneyMedium",
     marginBottom: 10,
   },
   date: {
@@ -140,12 +151,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "500",
     marginBottom: 0,
-    // fontFamily: "WhitneyMedium",
+    fontFamily: "WhitneyMedium",
   },
   text: {
     fontSize: 16,
     fontWeight: "500",
-    // fontFamily: "Mercury",
+    fontFamily: "Mercury",
   },
   articleFooter: {
     marginTop: 5,
@@ -156,7 +167,7 @@ const styles = StyleSheet.create({
   button: {
     fontSize: 16,
     fontWeight: "500",
-    // fontFamily: "WhitneyMedium",
+    fontFamily: "WhitneyMedium",
     color: "#FFF",
   },
   buttonContainer: {
@@ -216,7 +227,7 @@ const styles = StyleSheet.create({
     lineHeight: 33,
     fontWeight: "bold",
     marginBottom: 10,
-    // fontFamily: "WhitneyBold",
+    fontFamily: "WhitneyBold",
   },
   closeTab: {
     textAlign: "left",
