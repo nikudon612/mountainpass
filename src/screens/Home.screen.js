@@ -98,13 +98,6 @@ function HomeScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
       />
-      <Button
-        title="Go to Details"
-        onPress={() => {
-          /* 1. Navigate to the Details route with params */
-          navigation.navigate("Details", { buttonarticles });
-        }}
-      />
     </View>
   );
 }
