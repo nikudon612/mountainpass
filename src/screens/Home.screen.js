@@ -8,23 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useFonts } from "expo-font";
-
-const user = {
-  id: "jane",
-  firstName: "Jane",
-  lastName: "Done",
-  age: 25,
-};
-
-const buttonarticles = {
-  id: 1,
-  kind: "PODCAST",
-  title: "Will Central Banks Really Be Easing in Nine Months?",
-  author: "By Larry Cofsky, Danny Newman",
-  date: "August 12th 2022 4:45pm",
-  text: "At the end of last year, we described a liquidity hole that we expected would grow and envelop most assets. Last year, the fundamental conditions for assets (particularly bonds) deteriorated quickly, but asset purchases by the Fed combined with huge purchases by banks left asset markets swamped with money. That money worked its way to every corner of asset markets, leaving the pricing of many assets dependent on the continual flow of new purchases. The Fed’s late but abrupt reaction to inflation is now rippling through financial markets and, by our measures, is about to push the US economy into a recession and a significant decline in profits. In a Bloomberg interview Thursday, co-CIO Greg Jensen discussed the implications of this liquidity pullback and the Fed reaction function for different financial assets. In this report, we give an update on the big ongoing shifts we have discussed before that are behind what we are seeing today:",
-  button: "Play Podcast",
-};
+import Slider from "@react-native-community/slider";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const articles = [
   {
@@ -71,6 +56,7 @@ const renderItem = ({ item, navigation }) => (
   </TouchableOpacity>
 );
 function HomeScreen({ navigation }) {
+  //fonts
   const [loaded] = useFonts({
     Mercury: require("../../assets/fonts/Mercury.otf"),
     WhitneyBold: require("../../assets/fonts/whitneybold.otf"),
@@ -80,6 +66,7 @@ function HomeScreen({ navigation }) {
   if (!loaded) {
     return null;
   }
+  //fonts
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -102,6 +89,124 @@ function HomeScreen({ navigation }) {
                   {item.text}
                 </Text>
               </View>
+              {item.kind === "PODCAST" && (
+                <>
+                  <View style={styles.articleFooter}>
+                    <Text
+                      style={styles.date}
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
+                      {item.date} ● {""}
+                      {/* {new Date(progress.duration * 1000)
+                      .toISOString()
+                      .substr(14, 5)}{" "}
+                    min */}
+                    </Text>
+
+                    <Slider
+                      style={styles.progressContainer}
+                      // value={progress.position}
+                      minimumValue={0}
+                      // maximumValue={progress.duration}
+                      thumbTintColor="#FFF"
+                      minimumTrackTintColor="#990024"
+                      maximumTrackTintColor="##D9D9D9"
+                      onSlidingComplete={async (value) => {
+                        await TrackPlayer.seekTo(value);
+                      }}
+                    />
+                  </View>
+                  <View style={styles.articleBottomContainer}>
+                    <TouchableOpacity
+                      style={styles.buttonContainer}
+                      onPress={() => openMedia()}
+                    >
+                      <Ionicons
+                        // name={
+                        //   playbackState === State.Playing
+                        //     ? "ios-pause-circle"
+                        //     : "ios-play-circle"
+                        // }
+                        name="ios-play-circle"
+                        size={50}
+                        color="#990024"
+                      />
+                    </TouchableOpacity>
+                    <View style={styles.iconContainer}>
+                      <TouchableOpacity>
+                        <Ionicons
+                          name="download"
+                          size={25}
+                          color="#878787"
+                          style={styles.icon}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                        <Ionicons
+                          name="bookmark"
+                          size={25}
+                          color="#878787"
+                          style={styles.icon}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity>
+                        <Ionicons
+                          name="share"
+                          size={25}
+                          color="#878787"
+                          style={styles.icon}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </>
+              )}
+              {item.kind === "INTERACTIVE" && (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    marginVertical: 24,
+                  }}
+                >
+                  <View style={styles.articleFooter}>
+                    <Text
+                      style={styles.date}
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
+                      {item.date}
+                    </Text>
+                  </View>
+                  <View style={styles.iconContainer}>
+                    <TouchableOpacity>
+                      <Ionicons
+                        name="download"
+                        size={25}
+                        color="#878787"
+                        style={styles.icon}
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <Ionicons
+                        name="bookmark"
+                        size={25}
+                        color="#878787"
+                        style={styles.icon}
+                      />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                      <Ionicons
+                        name="share"
+                        size={25}
+                        color="#878787"
+                        style={styles.icon}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              )}
             </View>
           </TouchableOpacity>
         )}
