@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,8 +13,18 @@ import Slider from "@react-native-community/slider";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 function DetailsScreen({ route, navigation }) {
+  //Modal State//
+  const [modalOpen, setModalOpen] = useState(false);
+  const [mediaModalOpen, setMediaModalOpen] = useState(false);
+
+  function openMedia() {
+    setMediaModalOpen(true);
+    // togglePlayback(playbackState);
+  }
+  //Modal State//
+
   /* 2. Get the param */
-  const { user, buttonarticles, articles, item } = route.params;
+  const { item } = route.params;
   const [loaded] = useFonts({
     Mercury: require("../../assets/fonts/Mercury.otf"),
     WhitneyBold: require("../../assets/fonts/whitneybold.otf"),
@@ -25,54 +35,96 @@ function DetailsScreen({ route, navigation }) {
     return null;
   }
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            paddingVertical: 20,
-          }}
-        >
-          <View style={styles.item}>
-            <View style={styles.articleTop} onPress={() => {}}>
-              <Text style={styles.kind}>{item.kind}</Text>
-              <Text style={styles.title}>{item.title}</Text>
-              <Text style={styles.author}>{item.author}</Text>
-              <Text style={styles.date}>{item.date}</Text>
+    <View style={styles.mainContainer}>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={styles.modalContainer}>
+            <View style={styles.closeTabContainer}>
               <TouchableOpacity
-                style={styles.articleButtonContainer}
-                onPress={() => {
-                  openMedia();
-                }}
+                style={styles.closeTab}
+                onPress={() => setModalOpen(false)}
               >
                 <Ionicons
-                  // name={
-                  //   playbackState === State.Playing
-                  //     ? "ios-pause-circle"
-                  //     : "ios-play-circle"
-                  // }
-                  name="ios-play-circle"
-                  size={50}
-                  color="white"
+                  name="chevron-back-outline"
+                  size={25}
+                  style={{ marginBottom: 24 }}
                 />
-                <Text style={styles.buttonText}>
-                  {/* {playbackState === State.Playing
-                    ? "Pause Podcast"
-                    : "Play Podcast"} */}
-                  Play Podcast
-                </Text>
               </TouchableOpacity>
-
-              <Text style={styles.articleText}>{item.text}</Text>
+              <View style={styles.iconContainer}>
+                <TouchableOpacity>
+                  <Ionicons
+                    name="download"
+                    size={25}
+                    color="#878787"
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Ionicons
+                    name="bookmark"
+                    size={25}
+                    color="#878787"
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Ionicons
+                    name="share"
+                    size={25}
+                    color="#878787"
+                    style={styles.icon}
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              paddingVertical: 20,
+            }}
+          >
+            <View style={styles.item}>
+              <View style={styles.articleTop} onPress={() => {}}>
+                <Text style={styles.kind}>{item.kind}</Text>
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.author}>{item.author}</Text>
+                <Text style={styles.date}>{item.date}</Text>
+                <TouchableOpacity
+                  style={styles.articleButtonContainer}
+                  onPress={() => {
+                    openMedia();
+                  }}
+                >
+                  <Ionicons
+                    // name={
+                    //   playbackState === State.Playing
+                    //     ? "ios-pause-circle"
+                    //     : "ios-play-circle"
+                    // }
+                    name="ios-play-circle"
+                    size={50}
+                    color="white"
+                  />
+                  <Text style={styles.buttonText}>
+                    {/* {playbackState === State.Playing
+                    ? "Pause Podcast"
+                    : "Play Podcast"} */}
+                    Play Podcast
+                  </Text>
+                </TouchableOpacity>
 
-          {/* <Button title="Go to Home" onPress={() => navigation.navigate("Home")} /> */}
-          {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+                <Text style={styles.articleText}>{item.text}</Text>
+              </View>
+            </View>
+
+            {/* <Button title="Go to Home" onPress={() => navigation.navigate("Home")} /> */}
+            {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -140,7 +192,6 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   modalContainer: {
-    height: "100%",
     backgroundColor: "white",
     color: "black",
     fontSize: 24,
@@ -195,8 +246,8 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   closeTabContainer: {
-    marginTop: 60,
-    marginBottom: 24,
+    // marginTop: 60,
+    // marginBottom: 24,
     flexDirection: "row",
     justifyContent: "space-between",
     borderBottomWidth: 1,
@@ -259,5 +310,8 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "center",
+  },
+  mainContainer: {
+    backgroundColor: "white",
   },
 });

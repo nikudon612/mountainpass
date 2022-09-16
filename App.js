@@ -16,18 +16,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 //navigation stack variables//
 
-function SettingsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-      />
-    </View>
-  );
-}
-
+//Screen Stacks//
 const HomeStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
@@ -43,11 +32,11 @@ function HomeStackScreen() {
   );
 }
 
-const SettingsStack = createNativeStackNavigator();
+const MediaStack = createNativeStackNavigator();
 
-function SettingsStackScreen() {
+function MediaStackScreen() {
   return (
-    <SettingsStack.Navigator
+    <MediaStack.Navigator
       screenOptions={{
         cardStyle: {
           backgroundColor: "white",
@@ -55,11 +44,63 @@ function SettingsStackScreen() {
         headerShown: false,
       }}
     >
-      <SettingsStack.Screen name="Settings" component={SettingsScreen} />
-      <SettingsStack.Screen name="Details" component={DetailsScreen} />
-    </SettingsStack.Navigator>
+      <MediaStack.Screen name="Settings" component={SettingsScreen} />
+      <MediaStack.Screen name="Details" component={DetailsScreen} />
+    </MediaStack.Navigator>
   );
 }
+const SearchStack = createNativeStackNavigator();
+
+function SearchStackScreen() {
+  return (
+    <SearchStack.Navigator
+      screenOptions={{
+        cardStyle: {
+          backgroundColor: "white",
+        },
+        headerShown: false,
+      }}
+    >
+      <SearchStack.Screen name="Settings" component={SettingsScreen} />
+      <SearchStack.Screen name="Details" component={DetailsScreen} />
+    </SearchStack.Navigator>
+  );
+}
+const PortfolioStack = createNativeStackNavigator();
+
+function PortfolioStackScreen() {
+  return (
+    <PortfolioStack.Navigator
+      screenOptions={{
+        cardStyle: {
+          backgroundColor: "white",
+        },
+        headerShown: false,
+      }}
+    >
+      <PortfolioStack.Screen name="Settings" component={SettingsScreen} />
+      <PortfolioStack.Screen name="Details" component={DetailsScreen} />
+    </PortfolioStack.Navigator>
+  );
+}
+const ProfileStack = createNativeStackNavigator();
+
+function ProfileStackScreen() {
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        cardStyle: {
+          backgroundColor: "white",
+        },
+        headerShown: false,
+      }}
+    >
+      <ProfileStack.Screen name="Settings" component={SettingsScreen} />
+      <ProfileStack.Screen name="Details" component={DetailsScreen} />
+    </ProfileStack.Navigator>
+  );
+}
+//Screen Stacks//
 
 export default function App() {
   return (
