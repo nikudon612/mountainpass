@@ -10,7 +10,6 @@ import MediaScreen from "./src/screens/Media.screen";
 import SearchScreen from "./src/screens/Search.screen";
 import PortfolioScreen from "./src/screens/Portfolio.screen";
 import ProfileScreen from "./src/screens/Profile.screen";
-import Icon from "react-native-vector-icons/FontAwesome";
 
 //navigation stack variables//
 const Stack = createNativeStackNavigator();
@@ -45,8 +44,7 @@ function MediaStackScreen() {
         headerShown: false,
       }}
     >
-      <MediaStack.Screen name="Settings" component={SettingsScreen} />
-      <MediaStack.Screen name="Details" component={DetailsScreen} />
+      <MediaStack.Screen name="Media" component={MediaScreen} />
     </MediaStack.Navigator>
   );
 }
@@ -62,8 +60,7 @@ function SearchStackScreen() {
         headerShown: false,
       }}
     >
-      <SearchStack.Screen name="Settings" component={SettingsScreen} />
-      <SearchStack.Screen name="Details" component={DetailsScreen} />
+      <SearchStack.Screen name="Search" component={SearchScreen} />
     </SearchStack.Navigator>
   );
 }
@@ -79,8 +76,7 @@ function PortfolioStackScreen() {
         headerShown: false,
       }}
     >
-      <PortfolioStack.Screen name="Settings" component={SettingsScreen} />
-      <PortfolioStack.Screen name="Details" component={DetailsScreen} />
+      <PortfolioStack.Screen name="Portfolio" component={PortfolioScreen} />
     </PortfolioStack.Navigator>
   );
 }
@@ -96,8 +92,7 @@ function ProfileStackScreen() {
         headerShown: false,
       }}
     >
-      <ProfileStack.Screen name="Settings" component={SettingsScreen} />
-      <ProfileStack.Screen name="Details" component={DetailsScreen} />
+      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
     </ProfileStack.Navigator>
   );
 }
