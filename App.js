@@ -116,9 +116,16 @@ export default function App() {
           component={HomeStackScreen}
           options={{
             tabBarShowLabel: false,
-            tabBarColor: "red",
-            tabBarIcon: () => (
-              <Image source={require("./assets/icons/home.png")} />
+            tabBarIcon: ({ tintColor, focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("./assets/icons/home.png")
+                    : require("./assets/icons/inactive/home.png")
+                }
+                color={tintColor}
+                size={50}
+              />
             ),
           }}
         />
@@ -127,9 +134,16 @@ export default function App() {
           component={MediaScreen}
           options={{
             tabBarShowLabel: false,
-            tabBarColor: "red",
-            tabBarIcon: () => (
-              <Image source={require("./assets/icons/clapperboard-play.png")} />
+            tabBarColor: "#121414",
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("./assets/icons/clapperboard-play.png")
+                    : require("./assets/icons/inactive/clapperboard-play.png")
+                }
+                size={50}
+              />
             ),
           }}
         />
@@ -139,8 +153,19 @@ export default function App() {
           options={{
             tabBarShowLabel: false,
             tabBarColor: "red",
-            tabBarIcon: () => (
-              <Image source={require("./assets/icons/Search.png")} />
+            tabBarOptions: {
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            },
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("./assets/icons/Search.png")
+                    : require("./assets/icons/inactive/Search.png")
+                }
+                size={50}
+              />
             ),
           }}
         />
@@ -150,8 +175,15 @@ export default function App() {
           options={{
             tabBarShowLabel: false,
             tabBarColor: "red",
-            tabBarIcon: () => (
-              <Image source={require("./assets/icons/chart-pie.png")} />
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("./assets/icons/chart-pie.png")
+                    : require("./assets/icons/inactive/chart-pie.png")
+                }
+                size={50}
+              />
             ),
           }}
         />
@@ -161,8 +193,15 @@ export default function App() {
           options={{
             tabBarShowLabel: false,
             tabBarColor: "red",
-            tabBarIcon: () => (
-              <Image source={require("./assets/icons/user-circle.png")} />
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={
+                  focused
+                    ? require("./assets/icons/user-circle.png")
+                    : require("./assets/icons/inactive/user-circle.png")
+                }
+                size={50}
+              />
             ),
           }}
         />
