@@ -1,6 +1,6 @@
 // In App.js in a new project
 import React, { useCallback } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -10,6 +10,7 @@ import MediaScreen from "./src/screens/Media.screen";
 import SearchScreen from "./src/screens/Search.screen";
 import PortfolioScreen from "./src/screens/Portfolio.screen";
 import ProfileScreen from "./src/screens/Profile.screen";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 //navigation stack variables//
 const Stack = createNativeStackNavigator();
@@ -113,12 +114,58 @@ export default function App() {
         <Tab.Screen
           name="Overview"
           component={HomeStackScreen}
-          // options={{ tabBarIcon: () => <Image /> }}
+          options={{
+            tabBarShowLabel: false,
+            tabBarColor: "red",
+            tabBarIcon: () => (
+              <Image source={require("./assets/icons/home.png")} />
+            ),
+          }}
         />
-        <Tab.Screen name="Media" component={MediaScreen} />
-        <Tab.Screen name="Search" component={SearchScreen} />
-        <Tab.Screen name="Portfolio" component={PortfolioScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen
+          name="Media"
+          component={MediaScreen}
+          options={{
+            tabBarShowLabel: false,
+            tabBarColor: "red",
+            tabBarIcon: () => (
+              <Image source={require("./assets/icons/clapperboard-play.png")} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Search"
+          component={SearchScreen}
+          options={{
+            tabBarShowLabel: false,
+            tabBarColor: "red",
+            tabBarIcon: () => (
+              <Image source={require("./assets/icons/Search.png")} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Portfolio"
+          component={PortfolioScreen}
+          options={{
+            tabBarShowLabel: false,
+            tabBarColor: "red",
+            tabBarIcon: () => (
+              <Image source={require("./assets/icons/chart-pie.png")} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarShowLabel: false,
+            tabBarColor: "red",
+            tabBarIcon: () => (
+              <Image source={require("./assets/icons/user-circle.png")} />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
