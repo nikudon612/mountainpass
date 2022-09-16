@@ -105,8 +105,16 @@ function ProfileStackScreen() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Overview" component={HomeStackScreen} />
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Tab.Screen
+          name="Overview"
+          component={HomeStackScreen}
+          // options={{ tabBarIcon: () => <Image /> }}
+        />
         <Tab.Screen name="Media" component={MediaScreen} />
         <Tab.Screen name="Search" component={SearchScreen} />
         <Tab.Screen name="Portfolio" component={PortfolioScreen} />

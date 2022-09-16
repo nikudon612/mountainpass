@@ -75,6 +75,7 @@ function HomeScreen({ navigation }) {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white",
+        paddingTop: 60,
       }}
     >
       <FlatList
