@@ -42,7 +42,7 @@ function DetailsScreen({ route, navigation }) {
             <View style={styles.closeTabContainer}>
               <TouchableOpacity
                 style={styles.closeTab}
-                onPress={() => setModalOpen(false)}
+                onPress={() => navigation.goBack()}
               >
                 <Ionicons
                   name="chevron-back-outline"
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   closeTabContainer: {
-    // marginTop: 60,
+    marginTop: 10,
     // marginBottom: 24,
     flexDirection: "row",
     justifyContent: "space-between",
