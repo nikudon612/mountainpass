@@ -6,8 +6,11 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
+  TouchableOpacity,
 } from "react-native";
 import { useFonts } from "expo-font";
+import Slider from "@react-native-community/slider";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 function DetailsScreen({ route, navigation }) {
   /* 2. Get the param */
@@ -36,7 +39,32 @@ function DetailsScreen({ route, navigation }) {
               <Text style={styles.kind}>{item.kind}</Text>
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.author}>{item.author}</Text>
-              <Text style={styles.text}>{item.text}</Text>
+              <Text style={styles.date}>{item.date}</Text>
+              <TouchableOpacity
+                style={styles.articleButtonContainer}
+                onPress={() => {
+                  openMedia();
+                }}
+              >
+                <Ionicons
+                  // name={
+                  //   playbackState === State.Playing
+                  //     ? "ios-pause-circle"
+                  //     : "ios-play-circle"
+                  // }
+                  name="ios-play-circle"
+                  size={50}
+                  color="white"
+                />
+                <Text style={styles.buttonText}>
+                  {/* {playbackState === State.Playing
+                    ? "Pause Podcast"
+                    : "Play Podcast"} */}
+                  Play Podcast
+                </Text>
+              </TouchableOpacity>
+
+              <Text style={styles.articleText}>{item.text}</Text>
             </View>
           </View>
 

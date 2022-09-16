@@ -6,7 +6,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./src/screens/Home.screen";
 import DetailsScreen from "./src/screens/Details.screen";
-import react from "react";
+import MediaScreen from "./src/screens/Media.screen";
+import SearchScreen from "./src/screens/Search.screen";
+import PortfolioScreen from "./src/screens/Portfolio.screen";
+import ProfileScreen from "./src/screens/Profile.screen";
 
 //navigation stack variables//
 const Stack = createNativeStackNavigator();
@@ -63,7 +66,10 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Overview" component={HomeStackScreen} />
-        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+        <Tab.Screen name="Media" component={MediaScreen} />
+        <Tab.Screen name="Search" component={SearchScreen} />
+        <Tab.Screen name="Portfolio" component={PortfolioScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
