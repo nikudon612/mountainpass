@@ -1,12 +1,12 @@
 // In App.js in a new project
-import * as React from "react";
+import React, { useCallback } from "react";
 import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./src/screens/Home.screen";
 import DetailsScreen from "./src/screens/Details.screen";
-// import HomeStack from "./src/screens/HomeStack.screen";
+import react from "react";
 
 //navigation stack variables//
 const Stack = createNativeStackNavigator();
@@ -46,6 +46,9 @@ function SettingsStackScreen() {
   return (
     <SettingsStack.Navigator
       screenOptions={{
+        cardStyle: {
+          backgroundColor: "white",
+        },
         headerShown: false,
       }}
     >
@@ -65,21 +68,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="Home">
-//         <Stack.Screen
-//           name="Home"
-//           component={HomeScreen}
-//           options={{ title: "Overview" }}
-//         />
-//         {(props) => <HomeScreen {...props} extraData={someData} />}
-//         <Stack.Screen name="Details" component={DetailsScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;
